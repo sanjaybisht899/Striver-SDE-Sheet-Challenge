@@ -1,3 +1,4 @@
+import java.sql.Array;
 import java.util.*;
 class MergeInterval{
     
@@ -21,18 +22,34 @@ class MergeInterval{
             }
           });
         
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i][0]+"  "+arr[i][1]);
-        }
-        
-        int start=arr[1][0];
-        int end=arr[1][0];
+        ArrayList <ArrayList<Integer>> a = new ArrayList<>(); 
+        int start=arr[0][0];
+        int end=arr[0][1];
         for (int i = 1; i < arr.length; i++) {
-            if(start>arr[i][1]){
-                start=arr[i][0];
-                end=arr[i][1];    
+            if(end>=arr[i][0]){
+
+                end=Math.max(end,arr[i][1]);    
             }
-            
+            else{
+                ArrayList <Integer> temp = new ArrayList<>();
+                temp.add(start);
+                temp.add(end);
+                start=arr[i][0];
+                end=arr[i][1];
+                a.add(temp);
+            }
         }
+        ArrayList <Integer> temp = new ArrayList<>();
+        temp.add(start);
+        temp.add(end);
+        a.add(temp);
+        
+        int result[][] = new int[a.size()][2];
+        for (int i = 0; i < a.size(); i++) {
+            result[i][0]=a.get(i).get(0);
+            result[i][1]=a.get(i).get(1);
+        }
+       
+        
     }
 }
