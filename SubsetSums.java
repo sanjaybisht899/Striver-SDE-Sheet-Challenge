@@ -8,14 +8,15 @@ public class SubsetSums {
         int arr[]={1,2,3};
         int n= arr.length;
         ArrayList<Integer> x = new ArrayList<>();
-        for (int i = 0; i < Math.pow(2, n); i++) {
+        for (int i = 0; i < (1<<n); i++) {
             int sum=0;
-            for (int j = 0; j < arr.length; j++) {
-                if((1<<j)&i){
-                    System.out.print(arr[j]+" ");
+            for (int j = 0; j < n; j++) {
+                if(((1<<j)&i) !=0){
+                    sum=sum+arr[j];
                 }
             }
-            System.out.println();
+            x.add(sum);
         }
+        System.out.println(x);
     }
 }
