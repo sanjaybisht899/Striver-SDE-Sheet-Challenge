@@ -3,13 +3,18 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Solution{
-    public static int findDuplicate(ArrayList<Integer> arr, int n){
-        HashSet <Integer> set = new HashSet<>();
-        for(int i=0;i<n;i++){
-            if(!set.add(arr.get(i))){
-                return arr.get(i);
-            }
+    public int findDuplicate(int[] arr){
+        int slow=arr[0];
+        int fast=arr[0];
+        do{
+            slow=arr[slow];
+            fast=arr[arr[fast]];
+        }while(slow!=fast);
+        fast=arr[0];
+        while(slow!=fast){
+            slow=arr[slow];
+            fast=arr[fast];
         }
-        return -1;
+        return fast;
     }
 }
