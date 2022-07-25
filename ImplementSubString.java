@@ -6,19 +6,14 @@ public class ImplementSubString {
     public static void main(String[] args) {
         String s="helloll";
         String p="ll";
-        int m=p.length();
-        int result=0;
-        int n=s.length();
-        while(s.indexOf(p)!=-1){
-            int tmp=s.indexOf(p)-1;
-            System.err.println(tmp+" Temp");
-            s=s.substring(tmp+1+m);
-            System.err.println(s+" S");
-            result++;
-            
+        for(int i=0;i<s.length()-2;i++){
+            String p=s.substring(i, i+2);
+            if(ans==p){
+                count++;
+            }
         }
     
 
-        System.out.println(result);
+        System.out.println(count);
     }    
 }
