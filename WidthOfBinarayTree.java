@@ -1,14 +1,14 @@
 class Solution {
     public int widthOfBinaryTree(TreeNode root) {
         int result=0;
-        Queue Pair q = new LinkedList();
+        Queue <Pair> q = new LinkedList();
         q.offer(new Pair(0,root));
         int first=0;
         int last=0;
         while(!q.isEmpty()){
             int size=q.size();
             int maximum=q.peek().level;
-            for(int i=0;isize;i++){
+            for(int i=0;i<size;i++){
                 int current=q.peek().level - maximum;
                 TreeNode temp=q.peek().node;
                 
