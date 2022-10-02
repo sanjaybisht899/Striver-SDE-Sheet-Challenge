@@ -78,3 +78,29 @@ public class RotateMatrix {
         }
     }
 }
+
+
+class Solution {
+    public void rotate(int[][] matrix) {
+        //Make Transpose of Matrix 
+        int n=matrix.length;
+        for(int i=0;i<n;i++){
+            for(int j=i;j<n;j++){
+                swap(matrix,i,j);
+            }
+        }
+        //Reverse the elements of the array
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n/2;j++){
+                int temp=matrix[i][j];
+                matrix[i][j]=matrix[i][n-j-1];
+                matrix[i][n-j-1]=temp;
+            }
+        }
+    }
+    public void swap(int [][]swap,int i,int j){
+        int temp=swap[i][j];
+        swap[i][j]=swap[j][i];
+        swap[j][i]=temp;
+    }
+}
