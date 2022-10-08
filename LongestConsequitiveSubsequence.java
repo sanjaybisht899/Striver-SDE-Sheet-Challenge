@@ -1,6 +1,5 @@
-import java.util.*;
-public class LongestCommonSubsequence {
-    public static int lengthOfLongestConsecutiveSequence(int[] nums, int N) {
+class Solution {
+    public int longestConsecutive(int[] nums) {
         TreeMap<Integer,Integer> map=new TreeMap<>();
         
         for(int i=0;i<nums.length;i++){
@@ -29,6 +28,22 @@ public class LongestCommonSubsequence {
          max=Math.max(max,curr);
         return max;
     }
-    public static void main(String[] args) {
+}
+
+public int longestConsecutive(int[] nums) {
+    Set<Integer> set = new HashSet<>();
+    for(int n : nums) {
+        set.add(n);
     }
+    int best = 0;
+    for(int n : set) {
+        if(!set.contains(n - 1)) {  // only check for one direction
+            int m = n + 1;
+            while(set.contains(m)) {
+                m++;
+            }
+            best = Math.max(best, m - n);
+        }
+    }
+    return best;
 }
