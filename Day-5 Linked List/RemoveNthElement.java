@@ -1,6 +1,3 @@
-/**
- * RemoveNthElement
- */
 public class RemoveNthElement {
 
     public ListNode removeNthFromEnd(ListNode head, int n) {
